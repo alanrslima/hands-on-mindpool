@@ -7,8 +7,9 @@ import Link from "next/link";
 const Home: NextPage = () => {
   return (
     <Box
-      w="100vw"
-      h="100vh"
+      position="fixed"
+      w="100%"
+      h="100%"
       bgGradient="linear(135deg, #DADADA 0%, #E99393 0%, #D8D8D8 0.01%, #D8D8D8 46.35%, #BDBDBD 100%)"
     >
       <Head>

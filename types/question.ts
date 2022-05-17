@@ -8,4 +8,5 @@ export interface QuestionProps {
   createdAt: string;
   title: string;
   category: QuestionCategoryProps;
+  score?: number;
 }
