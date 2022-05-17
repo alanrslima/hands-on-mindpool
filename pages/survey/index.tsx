@@ -93,7 +93,16 @@ const Survey: NextPage<SurveyProps> = (survey) => {
             maxIndex={questions.length}
           />
           <Spacer />
-          <Button onClick={onClickContinueButton}>Continue</Button>
+          <Button
+            colorScheme="green"
+            height="48px"
+            minWidth={{ base: "143px", sm: "230px" }}
+            boxShadow="lg"
+            borderRadius={50}
+            onClick={onClickContinueButton}
+          >
+            {lastQuestion() ? "Finish" : "Continue"}
+          </Button>
         </HStack>
       </Container>
     </Box>

@@ -27,7 +27,7 @@ const Navigator = (props: NavigatorProps) => {
         disabled={minDisabled}
         size="lg"
         mr={2}
-        aria-label="Search database"
+        aria-label="Previous index page"
         icon={<FiChevronUp />}
       />
       <IconButton
@@ -35,7 +35,7 @@ const Navigator = (props: NavigatorProps) => {
         size="lg"
         disabled={maxDisabled}
         colorScheme="gray"
-        aria-label="Search database"
+        aria-label="Next index page"
         icon={<FiChevronDown />}
       />
     </Box>
