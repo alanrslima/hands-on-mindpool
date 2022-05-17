@@ -12,17 +12,32 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Rating from "../../components/Rating";
+import Navigator from "../../components/Navigator";
+import { useRouter } from "next/router";
 
 const Survey: NextPage<SurveyProps> = (survey) => {
   const [index, setIndex] = useState(0);
   const [questions, setQuestions] = useState(survey.questions);
 
-  const progress = (index * 100) / survey.questions.length;
+  const progress = (index * 100) / questions.length;
+  const router = useRouter();
   const question = questions.find((_, i) => i === index);
 
   if (!survey) {
     return <h1>Loading</h1>;
   }
+
+  const lastQuestion = () => {
+    return index >= questions.length - 1;
+  };
+
+  const onClickContinueButton = () => {
+    if (lastQuestion()) {
+      router.push("/survey/concluded", undefined, { shallow: true });
+    } else {
+      nextQuestion();
+    }
+  };
 
   const nextQuestion = () => {
     setIndex((prevState) => prevState + 1);
@@ -42,9 +57,9 @@ const Survey: NextPage<SurveyProps> = (survey) => {
   };
 
   return (
-    <Box position="fixed" w="100%" h="100%">
+    <Box bg="#FAFAFA" position="fixed" w="100%" h="100%">
       <Progress size="sm" colorScheme="green" value={progress} />
-      <Container p={30}>
+      <Container position="relative" h="100%" p={30}>
         <Heading
           textTransform="uppercase"
           textColor="#04384B"
@@ -56,9 +71,9 @@ const Survey: NextPage<SurveyProps> = (survey) => {
         <Text
           textColor="#666666"
           mt={5}
-          mb={10}
+          mb={{ base: 10, md: 20 }}
           fontWeight="light"
-          fontSize="2xl"
+          fontSize={{ base: "2xl", md: "4xl" }}
         >
           {question?.title}
         </Text>
@@ -71,9 +86,14 @@ const Survey: NextPage<SurveyProps> = (survey) => {
           right={0}
           position="absolute"
         >
-          <Button onClick={previousQuestion}>Previous</Button>
+          <Navigator
+            onClickNext={nextQuestion}
+            onClickPrevious={previousQuestion}
+            index={index}
+            maxIndex={questions.length}
+          />
           <Spacer />
-          <Button onClick={nextQuestion}>Continue</Button>
+          <Button onClick={onClickContinueButton}>Continue</Button>
         </HStack>
       </Container>
     </Box>

@@ -47,7 +47,7 @@ const Rating = (props: RatingProps) => {
               borderWidth={score === item.score ? 5 : 1}
               borderColor={score === item.score ? "green" : "#828282"}
               _hover={{ opacity: 0.5 }}
-              size={{ base: "12", md: "16" }}
+              size={{ base: "10", sm: "14", md: "16" }}
             />
           </Center>
         ))}
