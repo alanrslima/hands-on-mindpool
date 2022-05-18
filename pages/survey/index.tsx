@@ -14,10 +14,17 @@ import {
 import Rating from "../../components/Rating";
 import Navigator from "../../components/Navigator";
 import { useRouter } from "next/router";
+import { QuestionProps } from "../../types/question";
 
-const Survey: NextPage<SurveyProps> = (survey) => {
+interface SurveyPageProps {
+  survey?: SurveyProps;
+}
+
+const Survey: NextPage<SurveyPageProps> = ({ survey }) => {
   const [index, setIndex] = useState(0);
-  const [questions, setQuestions] = useState(survey.questions);
+  const [questions, setQuestions] = useState<QuestionProps[]>(
+    survey?.questions || []
+  );
 
   const progress = (index * 100) / questions.length;
   const router = useRouter();
@@ -117,7 +124,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await response.json();
 
   return {
-    props: data,
+    props: { survey: data },
     revalidate: 60 * 60,
   };
 };

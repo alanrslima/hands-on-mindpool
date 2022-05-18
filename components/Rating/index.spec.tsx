@@ -10,11 +10,10 @@ describe("Rating Component", () => {
     expect(getAllByRole("button")).toHaveLength(defaultIndicatorsLength);
   });
 
-  it("Should render a rating component with de default score", () => {
+  it("Should render a rating component with de default score selected", () => {
     const { getAllByRole } = render(<Rating defaultScore={0} />, {
       wrapper: ChakraProvider,
     });
-    const defaultIndicatorsLength = 7;
-    // expect(getAllByRole("button")).tohave;
+    expect(getAllByRole("button")[0]).toHaveStyle('borderColor: "green"');
   });
 });
