@@ -47,7 +47,7 @@ describe("Survey Component", () => {
     expect(
       getByText(`${firstQuestion.id}. ${firstQuestion.category.name}`)
     ).toBeInTheDocument();
-    expect(getByText(surveyMock.questions[0].title)).toBeInTheDocument();
+    expect(getByText(firstQuestion.title)).toBeInTheDocument();
     expect(getByText("Continue")).toBeInTheDocument();
   });
 
@@ -99,5 +99,39 @@ describe("Survey Component", () => {
       wrapper: ChakraProvider,
     });
     expect(getByText("Loading")).toBeInTheDocument();
+  });
+
+  it("Should navigate questions using the navigator component", async () => {
+    const { getByTestId, getByText } = render(<Survey survey={surveyMock} />, {
+      wrapper: ChakraProvider,
+    });
+
+    const firstQuestion = surveyMock.questions[0];
+    expect(
+      getByText(`${firstQuestion.id}. ${firstQuestion.category.name}`)
+    ).toBeInTheDocument();
+    expect(getByText(firstQuestion.title)).toBeInTheDocument();
+
+    const navigatorNext = getByTestId("navigator-component-button-down");
+    userEvent.click(navigatorNext);
+
+    await waitFor(() => {
+      const secondQuestion = surveyMock.questions[1];
+      expect(
+        getByText(`${secondQuestion.id}. ${secondQuestion.category.name}`)
+      ).toBeInTheDocument();
+      expect(getByText(secondQuestion.title)).toBeInTheDocument();
+    });
+
+    const navigatorPrevious = getByTestId("navigator-component-button-up");
+    userEvent.click(navigatorPrevious);
+
+    await waitFor(() => {
+      const firstQuestion = surveyMock.questions[1];
+      expect(
+        getByText(`${firstQuestion.id}. ${firstQuestion.category.name}`)
+      ).toBeInTheDocument();
+      expect(getByText(firstQuestion.title)).toBeInTheDocument();
+    });
   });
 });

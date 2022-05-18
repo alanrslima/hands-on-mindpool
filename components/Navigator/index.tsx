@@ -20,7 +20,7 @@ const Navigator = (props: NavigatorProps) => {
   const maxDisabled = props.index >= props.maxIndex - 1;
 
   return (
-    <Box>
+    <Box data-testid="navigator-component">
       <IconButton
         onClick={previous}
         colorScheme="gray"
@@ -28,6 +28,7 @@ const Navigator = (props: NavigatorProps) => {
         size="lg"
         mr={2}
         aria-label="Previous index page"
+        data-testid="navigator-component-button-up"
         icon={<FiChevronUp />}
       />
       <IconButton
@@ -36,6 +37,7 @@ const Navigator = (props: NavigatorProps) => {
         disabled={maxDisabled}
         colorScheme="gray"
         aria-label="Next index page"
+        data-testid="navigator-component-button-down"
         icon={<FiChevronDown />}
       />
     </Box>
