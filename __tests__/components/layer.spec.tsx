@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render } from "@testing-library/react";
 
-import Layer from ".";
+import Layer from "../../components/Layer";
 
 describe("Layer Component", () => {
   it("should render a layer with a title and logo", () => {

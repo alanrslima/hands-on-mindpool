@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render } from "@testing-library/react";
 
-import Navigator from ".";
+import Navigator from "../../components/Navigator";
 
 describe("Navigator Component", () => {
   it("Should render a navigator component", () => {

@@ -3,7 +3,7 @@ import { render, waitFor } from "@testing-library/react";
 import { SurveyProps } from "../../types/survey";
 import userEvent from "@testing-library/user-event";
 
-import Survey from "./index";
+import Survey from "../../pages/survey";
 
 const surveyMock: SurveyProps = {
   surveyId: 1,
