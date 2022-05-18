@@ -8,6 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { RatingHelpers } from "./helpers";
 
 interface RatingProps {
   onClickRating?: (score: number) => void;
@@ -15,20 +16,11 @@ interface RatingProps {
 }
 const Rating = (props: RatingProps) => {
   const [score, setScore] = useState<number>();
+  const indicators = RatingHelpers.getIndicators();
 
   useEffect(() => {
     setScore(props.defaultScore);
   }, [props.defaultScore]);
-
-  const indicators = [
-    { color: "#4F4F4F", score: 0 },
-    { color: "#828282", score: 1 },
-    { color: "#BDBDBD", score: 2 },
-    { color: "#DBDBDB", score: 3 },
-    { color: "#BDBDBD", score: 4 },
-    { color: "#828282", score: 5 },
-    { color: "#4F4F4F", score: 6 },
-  ];
 
   const handleScore = (value: number) => {
     setScore(value);
@@ -59,7 +51,6 @@ const Rating = (props: RatingProps) => {
           </Text>
         </Box>
         <Spacer />
-
         <Box>
           <Text fontWeight="bold">Very good</Text>
         </Box>

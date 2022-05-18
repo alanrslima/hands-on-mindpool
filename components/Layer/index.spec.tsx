@@ -20,12 +20,13 @@ describe("Layer Component", () => {
     const { getByText, getByAltText, getByRole } = render(
       <Layer
         title="Hello layer"
-        button={{ title: "start", onClick: () => {} }}
+        button={{ title: "start", onClick: jest.fn(() => {}) }}
       />,
       { wrapper: ChakraProvider }
     );
     expect(getByText("Hello layer")).toBeInTheDocument();
     expect(getByAltText("Graypool logo")).toBeInTheDocument();
+    expect(getByRole("button")).toBeInTheDocument();
     expect(getByRole("button")).toBeInTheDocument();
   });
 });
