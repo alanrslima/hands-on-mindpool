@@ -1,9 +1,9 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render, waitFor } from "@testing-library/react";
-import { SurveyProps } from "../../types/survey";
 import userEvent from "@testing-library/user-event";
 
-import Survey from "../../pages/survey";
+import Survey from "../../src/pages/survey";
+import { SurveyProps } from "../../src/types/survey";
 
 const surveyMock: SurveyProps = {
   surveyId: 1,

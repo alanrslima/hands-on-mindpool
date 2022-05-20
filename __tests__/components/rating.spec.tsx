@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render } from "@testing-library/react";
 
-import Rating from "../../components/Rating";
+import Rating from "../../src/components/Rating";
 
 describe("Rating Component", () => {
   it("Should render a default rating component", () => {

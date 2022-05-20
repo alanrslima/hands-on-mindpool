@@ -15,6 +15,7 @@ import Rating from "../../components/Rating";
 import Navigator from "../../components/Navigator";
 import { useRouter } from "next/router";
 import { QuestionProps } from "../../types/question";
+import { SurveyServices } from "../../services/survey.services";
 
 interface SurveyPageProps {
   survey?: SurveyProps;
@@ -119,10 +120,7 @@ const Survey: NextPage<SurveyPageProps> = ({ survey }) => {
 export default Survey;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const uri = "https://demo7671310.mockable.io/api/surveys/frontend-interview";
-  const response = await fetch(uri);
-  const data = await response.json();
-
+  const data = await SurveyServices.get();
   return {
     props: { survey: data },
     revalidate: 60 * 60,
