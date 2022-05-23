@@ -39,7 +39,8 @@ const Rating = (props: RatingProps) => {
               bg={item.color}
               borderWidth={1}
               borderColor="#828282"
-              _hover={{ opacity: 0.5 }}
+              transition="all 0.2s ease"
+              _hover={{ opacity: 0.5, marginTop: -3 }}
               size={{ base: "10", sm: "14", md: "16" }}
             >
               {score === item.score ? <FiCheck size={30} color="#FFF" /> : null}
