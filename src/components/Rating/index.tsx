@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { RatingHelpers } from "./index.helpers";
+import { FiCheck } from "react-icons/fi";
 
 interface RatingProps {
   onClickRating?: (score: number) => void;
@@ -36,11 +37,13 @@ const Rating = (props: RatingProps) => {
               as="button"
               onClick={() => handleScore(item.score)}
               bg={item.color}
-              borderWidth={score === item.score ? 5 : 1}
-              borderColor={score === item.score ? "green" : "#828282"}
+              borderWidth={1}
+              borderColor="#828282"
               _hover={{ opacity: 0.5 }}
               size={{ base: "10", sm: "14", md: "16" }}
-            />
+            >
+              {score === item.score ? <FiCheck size={30} color="#FFF" /> : null}
+            </Circle>
           </Center>
         ))}
       </SimpleGrid>

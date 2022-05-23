@@ -102,8 +102,9 @@ const Survey: NextPage<SurveyPageProps> = ({ survey }) => {
           />
           <Spacer />
           <Button
-            colorScheme="green"
+            bgColor="#BDBDBD"
             height="48px"
+            textColor="#FFF"
             minWidth={{ base: "143px", sm: "230px" }}
             boxShadow="lg"
             borderRadius={50}
